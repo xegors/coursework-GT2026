@@ -1,0 +1,12 @@
+asy/
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.pre
+*.toc
+*.xdv
+
+*.nav
+*.snm

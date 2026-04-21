@@ -1,0 +1,64 @@
+\ProvidesPackage{be-my-geometry}
+
+% Main sizes
+\RequirePackage[
+	a5paper,
+	left = 1.3cm, 
+	right = 8mm, 
+	top = 18m, 
+	bottom = 7mm, 
+	footnotesep = 5mm
+]{geometry}
+
+
+% Misc
+\setlength{\headheight}{30pt}
+\def\columnseprulecolor{\color{blue3}}
+\setlength{\columnsep}{5mm}
+\setlength{\columnseprule}{1pt}
+\interfootnotelinepenalty=10000000
+\counterwithin*{footnote}{page}
+
+
+% Fancy...
+\RequirePackage{fancyhdr, hyperref}
+
+%\def\headrule{{              % double ruler in header             
+%		\if@fancyplain\let\headrulewidth \plainheadrulewidth \fi
+%		\hrule\@height\headrulewidth height 0.5pt\@width\headwidth\vskip 2pt %
+%		\hrule\@height\headrulewidth height 1pt \@width \headwidth\vskip-\headrulewidth\vskip-4pt %height2pt
+%}}
+
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[LO, RE]{
+    \thepage
+}
+\fancyhead[C]{
+    \nouppercase{\rightmark}
+}
+
+% \fancyhead[RO, LE]{
+% 	\nouppercase{\leftmark \\
+% 		\rightmark}
+% }
+
+\fancyfoot{}
+
+% Date style
+\renewcommand{\date}[1]{\fancypagestyle{date}
+{\fancyhead{}
+\fancyhead[LO, RE]{
+    #1 \\
+    \thepage
+}
+\fancyhead[C]{
+    \nouppercase{\rightmark}
+}
+
+\fancyfoot{}
+}
+\thispagestyle{date}
+}
+

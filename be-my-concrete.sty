@@ -1,0 +1,255 @@
+\ProvidesPackage{be-my-concrete}
+
+% Fonts
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T2A]{fontenc}
+\RequirePackage[russian]{babel}
+%% Custom fonts
+\RequirePackage{fontspec}
+\setsansfont{Manrope}
+\RequirePackage{unicode-math}
+\setmainfont{PT Serif}
+
+% Etc. Packages
+\RequirePackage{graphicx, multicol, import, epigraph, coffeestains, indentfirst, microtype, multirow}
+\RequirePackage[svgnames]{xcolor}
+%\coffeestainA{0.3}{0.7}{-25}{3cm}{1.3cm}
+
+\usepackage[inline]{asymptote}
+\begin{asydef}
+    settings.outformat = "pdf";
+    import geometry;
+
+    pen yellow1 = cmyk(0, 0.27, 1.00, 0.28);
+    pen yellow2 = cmyk(0, 0.26, 1, 0.12);
+    pen yellow3 = cmyk(0, 0.25, 0.96, 0);
+    pen yellow4 = cmyk(0, 0.21, 0.8, 0);
+
+    pen blue1 = cmyk(0.87, 0.42, 0, 0.6);
+    pen blue2 = cmyk(0.87, 0.42, 0, 0.44);
+    pen blue3 = cmyk(0.87, 0.42, 0, 0.29);
+    pen blue4 = cmyk(0.87, 0.42, 0, 0.15);
+
+    pen red1 = cmyk(0, 0.79, 0.6, 0.41);
+    pen red2 = cmyk(0, 0.79, 0.61, 0.27);
+    pen red3 = cmyk(0, 0.75, 0.58, 0.17);
+    pen red4 = cmyk(0, 0.6, 0.46, 0.14);
+
+    pen green1 = cmyk(0.25, 0, 0.39, 0.55);
+    pen green2 = cmyk(0.24, 0, 0.39, 0.45);
+    pen green3 = cmyk(0.23, 0, 0.36, 0.36);
+    pen green1 = cmyk(0.18, 0, 0.27, 0.31);
+\end{asydef}
+\def\asydir{asy}
+
+% Colors
+%% Yellows
+\definecolor{yellow1}{HTML}{B88700}
+\definecolor{yellow2}{HTML}{E0A500}
+\definecolor{yellow3}{HTML}{FFBE0A}
+\definecolor{yellow4}{HTML}{FFC933}
+%% Blues
+\definecolor{blue1}{HTML}{0D3B66}
+\definecolor{blue2}{HTML}{135490}
+\definecolor{blue3}{HTML}{1769B5}
+\definecolor{blue4}{HTML}{1C7ED9}
+%% Reds
+\definecolor{red1}{HTML}{97203C}
+\definecolor{red2}{HTML}{B92749}
+\definecolor{red3}{HTML}{D4355A}
+\definecolor{red4}{HTML}{DB5776}
+%% Greens
+\definecolor{green1}{HTML}{567246}
+\definecolor{green2}{HTML}{698B55}
+\definecolor{green3}{HTML}{7DA267}
+\definecolor{green4}{HTML}{92B181}
+
+
+% Hyperref
+\RequirePackage[
+	colorlinks=true,
+	linkcolor=red3,
+	urlcolor=blue3,
+	pdfauthor={Лунёв Егор Артёмович},
+]{hyperref}
+
+
+
+
+% Math Packages
+\RequirePackage{amsmath, amsthm, amsfonts}
+% \RequirePackage{witharrows}
+%\begin{DispWithArrows}[displaystyle, wrap-lines, tagged-lines = last, fleqn, mathindent = 0 pt]
+
+%\end{DispWithArrows}
+
+%% Theorems
+
+%%% Added stylye
+\newtheoremstyle{plainplus}% name of the style to be used
+    {\topsep}% measure of space to leave above the theorem. E.g.: 3pt
+    {\topsep}% measure of space to leave below the theorem. E.g.: 3pt
+    {\itshape}% name of font to use in the body of the theorem
+    {0pt}% measure of space to indent
+    {\scshape}% name of head font
+    {. }% punctuation between head and body
+    { }% space after theorem head; " " = normal interword space
+    {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}}
+\newtheoremstyle{definitionplus}% name of the style to be used
+    {\topsep}% measure of space to leave above the theorem. E.g.: 3pt
+    {\topsep}% measure of space to leave below the theorem. E.g.: 3pt
+    {}% name of font to use in the body of the theorem
+    {0pt}% measure of space to indent
+    {\scshape}% name of head font
+    {.}% punctuation between head and body
+    { }% space after theorem head; " " = normal interword space
+    {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}}
+
+\theoremstyle{plainplus}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}{Лемма}[section]
+\newtheorem{proposition}{Утверждение}[section]
+\theoremstyle{definitionplus}
+\newtheorem{definition}{Определение}[section]
+\newtheorem{prac}{Упражнение}
+\counterwithin*{prac}{section}
+\theoremstyle{remark}
+\newtheorem*{rem}{Замечание}
+\newtheorem{example}{Пример}
+\counterwithin*{example}{section}
+\counterwithin{equation}{section}
+
+
+\newenvironment{remark}[1][]{%
+    \medskip
+    \noindent\begin{minipage}{\linewidth}%
+        \footnotesize
+        \begin{rem}[#1]%
+        }{%
+        \end{rem}%
+    \end{minipage}%
+
+    \vspace{0.5em}%
+}
+\newenvironment{practice}[1][]{%
+    \medskip
+    \noindent\begin{minipage}{\linewidth}%
+        \footnotesize
+        \begin{prac}[#1]%
+        }{%
+        \end{prac}%
+    \end{minipage}%
+
+    \vspace{0.5em}%
+}
+
+%% cleveref
+\RequirePackage[russian, noabbrev]{cleveref}
+\crefname{enumi}{задаче}{задачаx}
+\crefname{enumii}{задаче}{задачаx}
+\crefname{theorem}{теореме}{теоремах}
+\crefname{proposition}{утверждению}{утвержениях}
+\crefname{lemma}{лемме}{леммах}
+\crefname{equation}{уравнении}{уравнение}
+\crefname{definition}{определении}{определениe}
+\crefname{remark}{замечании}{замечание}
+\crefname{prac}{упражнении}{упражнение}
+\crefname{example}{примерe}{пример}
+\crefname{table}{таблице}{таблица}
+\crefname{figure}{рисунке}{рисунок}
+
+% Lists
+\RequirePackage[inline, shortlabels]{enumitem}
+
+
+\newlist{conditions}{enumerate}{2}
+\setlist[conditions, 1]{
+	label=(\roman{conditionsi}), %(i), (ii), (iii), ...
+	leftmargin=1cm,
+	rightmargin=.5cm
+}
+\setlist[conditions, 2]{
+	label=(\roman{conditionsi}.\alph{conditionsii}), % (i.a), (i.b), (i.c)
+	leftmargin=1cm,
+	rightmargin=.5cm
+}
+
+
+\newlist{inumerate}{enumerate*}{1}
+\setlist[inumerate, 1]{
+    label = (\alph{inumeratei}),
+    before=\unskip{: }, itemjoin={{;\quad}}, itemjoin*={{, и\quad}}
+}
+
+\newlist{bullets}{itemize}{3}
+\setlist[bullets, 1]{
+	label=$\circ$,
+	leftmargin=1cm,
+	rightmargin=.5cm
+}
+\setlist[bullets, 2]{
+    label=--,
+    leftmargin=1cm,
+    rightmargin=.5cm
+}
+\setlist[bullets, 3]{
+	label=$\diamond$,
+	leftmargin=1cm,
+	rightmargin=.5cm
+}
+
+% \newlist{tasks}{enumerate}{2}
+% \setlist[tasks, 1]{
+% 	label={\textbf{Задача \arabic{tasksi}:}},
+% 	leftmargin = 1mm,
+% 	labelsep = 5mm,
+% 	itemindent = 2.05cm
+% }
+% \setlist[tasks, 2]{
+% 	label=(\arabic{tasksi}.\alph{tasksii}),
+% 	itemindent=6mm
+% }
+
+
+
+% Sections formating
+\RequirePackage{titlesec}
+\titleformat{\section}{\large\bfseries\scshape\centering}{\S \thesection.}{1ex}{} % maybe \newpage ?
+\titleformat{\subsection}[runin]{\normalfont\bfseries}{\thesubsection.}{.5em}{}[.]
+\titlespacing{\subsection}{0pt}{1.5ex plus .1ex minus .2ex}{1ex}
+\titleformat{\subsubsection}[runin]{\normalfont\bfseries}{\thesubsubsection.}{.5em}{}[.]
+\titlespacing{\subsubsection}{0pt}{1.5ex plus .1ex minus .1ex}{1ex}
+
+% Aliases
+
+%% \DeclareMathOperator
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\id}{id}
+
+
+\newcommand*\rfrac[2]{{}^{#1}\!/_{#2}} 
+\newcommand{\quotes}[1]{,,#1``}
+\renewcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+
+%% Strange symbols
+\renewcommand{\bar}{\overline}
+\renewcommand{\vec}{\overrightarrow}
+\renewcommand{\emptyset}{\varnothing}
+
+\newcommand{\simrightarrow}{\overset{_\sim}{\to}}
+\newcommand{\defeq}{\overset{\footnotesize{\mathrm{def}}}{=}}
+\makeatletter
+\newcommand*{\coloneq}{\mathrel{\rlap{%
+			\raisebox{0.3ex}{$\m@th\cdot$}}%
+		\raisebox{-0.3ex}{$\m@th\cdot$}}%
+	=}
+\newcommand*{\eqcolon}{=
+	\mathrel{\rlap{%
+			\raisebox{0.3ex}{$\m@th\cdot$}}%
+		\raisebox{-0.3ex}{$\m@th\cdot$}}%
+}
+\makeatother
