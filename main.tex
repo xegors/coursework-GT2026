@@ -1,4 +1,4 @@
-\documentclass[10pt, twoside, openany]{book}
+\documentclass[10pt, twoside]{article}
 \usepackage{be-my-concrete, be-my-geometry}
 \usepackage{extra-GT}
 
@@ -15,9 +15,6 @@
 \setcounter{page}{1}
 \pagestyle{fancy}
 
-\mainmatter
-
-\chapter{Введение}
 \section{Клеточные комплексы}
 Предметом изучения нашего учебники буду преимущественно \emph{клеточные комплексы} (CW-комплексы), в меньшей степени симплициальные комплесксы. 
 
@@ -94,7 +91,7 @@ F(g \circ f) = F(g)\circ F(f), \quad F(\id_X) = \id_{F(X)}.
 Морфизмы категории $\Bs$ пораждаются теми же изоморфизмами пар и вложениями, а также симплициальными отображениями. 
 
 \section{Подразбиения}
-Если $L', L$ --- клеточные комплексы и каждый шар $L'$ содержится в каком-то шаре $L$, а также $|L|$ = $|L'|$, то будем говорить, что $L'$ \emph{подразбивает} $L$ и обозначать это $L \triangleleft L$. В категории $\Bi$ и $\Bs$ дела обстоят немного \quotes{технически лучше}, чем в категории симплициальных комплексов, а именно, если $L \subseteq K$ и $L' \triangleleft L$, тогда есть клеточный комплекс $L' \cup K = \{\sigma| \sigma \in L' \text{ или } \sigma \in K\setminus L\}$.
+Если $L', L$ --- клеточные комплексы и каждый шар $L'$ содержится в каком-то шаре $L$, а также $|L|$ = $|L'|$, то будем говорить, что $L'$ \emph{подразбивает} $L$ и обозначать это $L \bigtriangleleft L$. В категории $\Bi$ и $\Bs$ дела обстоят немного \quotes{технически лучше}, чем в категории симплициальных комплексов, а именно, если $L \subseteq K$ и $L' \bigtriangleleft L$, тогда есть клеточный комплекс $L' \cup K = \{\sigma| \sigma \in L' \text{ или } \sigma \in K\setminus L\}$.
 
 \subsection{Стягивания}
 \begin{definition}
@@ -128,7 +125,68 @@ F(g \circ f) = F(g)\circ F(f), \quad F(\id_X) = \id_{F(X)}.
     Условие \labelcref{equal3} избыточно и следует из условий \labelcref{equal1,equal2}
 \end{remark}
 
+\subsection{Универсальное свойство}
+Категория частных характеризуется универсальным свойством: здесь оно гарантирует, что $\B[\Sigma^{-1}]$ --- самая свободная категория из тех, где морфизмы $\Sigma$ обратимы.
+
+\begin{proposition}
+    Для любого функтора $F \colon \B \to \C$ такого, что $F(e)$ --- изоморфизм для любого $e \in \Sigma$ существует единственный функтор $F' \colon \B[\Sigma^{-1}] \to \C$ такой, что диаграмма
+    \begin{equation}
+        \begin{tikzcd}
+            \B \dar["p"] \rar["F"] & \C \\
+            \B[\Sigma^{-1}] \urar["F'", swap]
+        \end{tikzcd}
+    \end{equation}
+    коммутирует, то есть $F = F' \circ p$,  где $p \colon \B \to \B[\Sigma^{-1}]$, $f \mapsto [f]$ --- естественный фунтор локализации.
+\end{proposition}
+
+Для простоты дальше мы будем игнорировать пары $(K, L)$, где $L \neq \emptyset$, так как \quotes{общая картина мира} получается за счёт минимальной достройки.
+
+
+\begin{proposition}
+    Любой морфизм в $\Bi[\Sigma^{-1}]$ может быть представлен, как $$[e^{-1}\circ f], \quad e \in \Sigma, f \in \Mor(\Bi).$$
+\end{proposition}
+
+\begin{lemma}
+    Пусть $e \colon J \to K$ --- расширение и $f \colon J \to L \in \Mor(\Bi)$, а $J_0 = K \cup_{J} L$ --- кодекартов квадрат (pushout или амальгамация).\footnote{$J_0$ получается склейкой $K$ и $L$ по их общей части в $J$.} Тогда существует расширение $e_0 \colon L \to J_0$ и морфизм $f_0 \colon K \to J_0$ такой, что диаграмма
+    \begin{equation}
+        \begin{tikzcd}
+            J \rar["e"] \dar["f"] & K \dar["f_0"] \\
+            L \rar["e_0"] & J_0
+        \end{tikzcd}
+    \end{equation}
+    коммутирует, то есть $f_0 \circ e = e_0 \circ f.$
+\end{lemma}
+\begin{proof}
+    Заметим, что $e_0$ и $f_0$ --- естественные вложения в $J_0$. Покажем, что $e_0$ действительно расширение. Поскольку $e\colon J \to K$ --- расширение, тогда $K \searrow J$ стягивается. Если мы приклеем комплекс $L$ к $J$, то \quotes{торчащий} кусок $K$ также стянется. Значит $J_0 \searrow L$, а значит вложение $e_0 \colon L \hookrightarrow J_0$ суть расширение.
+\end{proof}
+Заметим, что в категории $\Bs$ такое невозможно, для этого посмотрим контрпример. Возьмём $K = I \times I$, где $I$ --- единичный отрезок. Также $J = \{0\} \times I \subset K$ --- левая грань, а $L = \{0\} \times \{0\} \subset J$ --- левая нижняя вершина квадрата. Пусть $f \colon J \to L$ схлопывает отрезок в точку. Чтобы коммутативный квадрат замкнулся $f_0 \colon K \to L$ должен стянуть всю левую грань квадрата в точку, чем сделает эту грань вырожденной.
+
+\subsubsection{Подразделение в категории частных}
+Пусть $L'$ подразделение $L$. Посмотрим цилиндр $L \times I$ и заменим его верхнее основание $L \times \{1\}$ на $L'$, получим пространство $(L\times [0, 1)) \cup (L' \times \{1\})$. В такое пространство есть два естественных вложения $i \colon L \hookrightarrow (L\times [0, 1)) \cup (L' \times \{1\})$ и $e \colon L' \hookrightarrow (L\times [0, 1)) \cup (L' \times \{1\})$. Любой цилиндр легко стягивается на своё основание: в нашем случае $(L\times [0, 1)) \cup (L' \times \{1\}) \searrow L'$, таким образом $e$ --- расширение, и в категории $\B[\Sigma^{-1}]$ существует морфизм $[e^{-1} \circ i] \colon L \to L'$, называемый \emph{подразделением} и обозначемый $\bigtriangleright(L, L')$.
+
+\begin{lemma}
+    Отображение $\bigtriangleright$ \emph{функториально}, то есть 
+    \begin{conditions}
+        \item $\bigtriangleright(L, L) = \id_L$;
+        \item Если $\bigtriangleright(L', L'')$ и $\bigtriangleright(L, L')$. Тогда $\bigtriangleright(L, L'')$.
+    \end{conditions}
+\end{lemma}
+\begin{proof}
+    Во-первых, нужно показать, что если $i_0, i_1 \colon K \hookrightarrow K \times I$ вложения, тогда $[i_0] = [i_1]$. Рассмотрим цилиндр $K \times I$ и подразделим его вставив копию $K$ на уровне $t = \rfrac{1}{2}$. Теперь есть три естественных вложения $i_0', i_1', i_{\rfrac{1}{2}}' \colon K \hookrightarrow K \times I$. Определим отражение $$r \colon K \times I \to K \times I, \quad x \times \{t\} \mapsto x \times \{1-t\}.$$ 
+    Заметим, что $r \circ i_{\rfrac 1 2}' = i_{\rfrac 1 2 }'$, а также, что $K \times I \searrow K_{\rfrac 1 2}$. Значит, что $i_{\rfrac 1 2}'$ --- это расширение, тогда в категории $\B[\Sigma^{-1}]$ у $[i_{\rfrac 1 2}']$ есть обратный, тогда умножим равенство на этот обратный:
+    \begin{equation}
+        \begin{aligned}
+            [r] \circ [i_{\rfrac 1 2}'] &= i_{\rfrac 1 2}' \\
+            [r] &= [\id_{K\times I}].
+        \end{aligned}
+    \end{equation}
+    При этом $r \times i_0' = i_1'$, а значит 
+    \begin{equation}
+        [r] \circ [i_0'] = [i_1'] \Longleftrightarrow [i_0'] = [i_1'].
+    \end{equation}
+    
+    Во-вторых, пусть $\Delta^2$ --- 2-симплекс с вершинами $v_0, v_1, v_2$ и противоположным им соотвественно рёбрам $\Delta_0^1, \Delta_1^1, \Delta_2^1.$ Пусть $$(L \times \Delta^2)' \coloneq (L \times \Delta^2) \cup (L' \times \Delta_0^1) \cup (L'' \times \{v_2\}). $$
+\end{proof}
 
 \end{document}
-
 

@@ -3,12 +3,9 @@
 % Fonts
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T2A]{fontenc}
-\RequirePackage[russian]{babel}
+\RequirePackage[russian, shorthands=pfff]{babel}
 %% Custom fonts
-\RequirePackage{fontspec}
-\setsansfont{Manrope}
-\RequirePackage{unicode-math}
-\setmainfont{PT Serif}
+\RequirePackage{paratype}
 
 % Etc. Packages
 \RequirePackage{graphicx, multicol, import, epigraph, coffeestains, indentfirst, microtype, multirow}
@@ -238,7 +235,6 @@
 %% Strange symbols
 \renewcommand{\bar}{\overline}
 \renewcommand{\vec}{\overrightarrow}
-\renewcommand{\emptyset}{\varnothing}
 
 \newcommand{\simrightarrow}{\overset{_\sim}{\to}}
 \newcommand{\eqdef}{\overset{\footnotesize{\mathrm{def}}}{=}}
