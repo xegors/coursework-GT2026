@@ -4,8 +4,13 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T2A]{fontenc}
 \RequirePackage[russian, shorthands=off]{babel}
+
 %% Custom fonts
-\RequirePackage{paratype}
+% \RequirePackage{fontspec, unicode-math}  % Для работы с системными шрифтами
+% \setmainfont{PT Serif}     % Основной шрифт
+% \setsansfont{Manrope}      % Шрифт для заголовков
+% \newfontface\shadower{Shadower}
+% \setmathfont{STIX Two Math}
 
 % Etc. Packages
 \RequirePackage{graphicx, multicol, import, epigraph, coffeestains, indentfirst, microtype, multirow}
@@ -66,6 +71,7 @@
 \RequirePackage[
 	colorlinks=true,
 	linkcolor=red3,
+    citecolor=red3,
 	urlcolor=blue3,
 	pdfauthor={Лунёв Егор Артёмович},
 ]{hyperref}
@@ -74,7 +80,7 @@
 
 
 % Math Packages
-\RequirePackage{amsmath, amsthm, amsfonts, mathrsfs}
+\RequirePackage{amsmath, amsthm, amssymb, amsfonts, mathrsfs}
 % \RequirePackage{witharrows}
 %\begin{DispWithArrows}[displaystyle, wrap-lines, tagged-lines = last, fleqn, mathindent = 0 pt]
 
@@ -142,18 +148,19 @@
 
 %% cleveref
 \RequirePackage[russian, noabbrev]{cleveref}
-\crefname{enumi}{задаче}{задачаx}
-\crefname{enumii}{задаче}{задачаx}
-\crefname{theorem}{теореме}{теоремах}
-\crefname{proposition}{утверждению}{утвержениях}
-\crefname{lemma}{лемме}{леммах}
-\crefname{equation}{уравнении}{уравнение}
-\crefname{definition}{определении}{определениe}
-\crefname{remark}{замечании}{замечание}
-\crefname{prac}{упражнении}{упражнение}
-\crefname{example}{примерe}{пример}
-\crefname{table}{таблице}{таблица}
-\crefname{figure}{рисунке}{рисунок}
+% \input{tucyradd.def} % for not pdflatex
+\crefname{enumi}{задача}{задачи}
+\crefname{enumii}{задача}{задачи}
+\crefname{theorem}{теорема}{теоремы}
+\crefname{proposition}{утверждение}{утвержения}
+\crefname{lemma}{лемма}{леммы}
+\crefname{equation}{уравнение}{уравнения}
+\crefname{definition}{определение}{определения}
+\crefname{remark}{замечание}{замечания}
+\crefname{prac}{упражнение}{упражнения}
+\crefname{example}{пример}{примеры}
+\crefname{table}{таблица}{таблицы}
+\crefname{figure}{рисунок}{рисунки}
 
 % Lists
 \RequirePackage[inline, shortlabels]{enumitem}
@@ -211,10 +218,10 @@
 
 % Sections formating
 \RequirePackage{titlesec}
-\titleformat{\section}{\large\bfseries\scshape\centering}{\S \thesection.}{1ex}{} % maybe \newpage ?
-\titleformat{\subsection}[runin]{\normalfont\bfseries}{\thesubsection.}{.5em}{}[.]
+\titleformat{\section}{\sffamily\large\bfseries\centering}{\S \thesection.}{1ex}{} % maybe \newpage ?
+\titleformat{\subsection}[runin]{\sffamily\normalfont\bfseries}{\thesubsection.}{.5em}{}[.]
 \titlespacing{\subsection}{0pt}{1.5ex plus .1ex minus .2ex}{1ex}
-\titleformat{\subsubsection}[runin]{\normalfont\bfseries}{\thesubsubsection.}{.5em}{}[.]
+\titleformat{\subsubsection}[runin]{\sffamily\normalfont\bfseries}{\thesubsubsection.}{.5em}{}[.]
 \titlespacing{\subsubsection}{0pt}{1.5ex plus .1ex minus .1ex}{1ex}
 
 % Aliases
