@@ -74,6 +74,7 @@
     citecolor=red3,
 	urlcolor=blue3,
 	pdfauthor={Лунёв Егор Артёмович},
+    pdftitle={Геометрическое описание гомологий и когомологий}
 ]{hyperref}
 
 
@@ -109,18 +110,16 @@
     {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}}
 
 \theoremstyle{plainplus}
-\newtheorem{theorem}{Теорема}[section]
-\newtheorem{lemma}{Лемма}[section]
-\newtheorem{proposition}{Утверждение}[section]
+\newtheorem{theorem}{Теорема}
+\newtheorem{lemma}{Лемма}
+\newtheorem{proposition}{Утверждение}
 \theoremstyle{definitionplus}
-\newtheorem{definition}{Определение}[section]
+\newtheorem{definition}{Определение}
 \newtheorem{prac}{Упражнение}
 \counterwithin*{prac}{section}
 \theoremstyle{remark}
 \newtheorem*{rem}{Замечание}
 \newtheorem{example}{Пример}
-\counterwithin*{example}{section}
-\counterwithin{equation}{section}
 
 
 \newenvironment{remark}[1][]{%
